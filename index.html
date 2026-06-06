@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>ShopMate | Modern E‑commerce</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- MODERN NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo"><i class="fas fa-store"></i> ShopMate</div>
+        <div class="search-filter-wrap">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search products..."
+              autocomplete="off"
+            />
+          </div>
+          <div class="filter-dropdown">
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+            </select>
+          </div>
+        </div>
+        <div class="cart-icon-wrapper" id="cartIconBtn">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cartCountNav">0</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN PRODUCT GRID -->
+    <main class="container">
+      <div class="products-header">
+        <h2>✨ Featured collection</h2>
+        <p id="resultStats">Loading amazing products...</p>
+      </div>
+      <div id="productsGrid" class="products-grid">
+        <div class="loading-spinner">
+          <i class="fas fa-spinner fa-pulse"></i> Loading products...
+        </div>
+      </div>
+    </main>
+
+    <!-- CART SIDEBAR DRAWER -->
+    <div id="cartOverlay" class="cart-overlay"></div>
+    <div id="cartSidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+        <button id="closeCartBtn" class="close-cart">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="cartItemsContainer" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotalPrice">$0.00</span>
+        </div>
+        <button id="checkoutBtn" class="checkout-btn">
+          Proceed to Checkout <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
