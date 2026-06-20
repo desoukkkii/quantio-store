@@ -2,78 +2,283 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <title>ShopMate | Modern E‑commerce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meridian — Premium Store</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
     />
   </head>
   <body>
-    <!-- MODERN NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="logo"><i class="fas fa-store"></i> ShopMate</div>
-        <div class="search-filter-wrap">
-          <div class="search-box">
+    <div class="announcement-bar">
+      <span>Free shipping on orders over $50</span>
+      <span class="announcement-divider">|</span>
+      <span>30-day easy returns</span>
+      <span class="announcement-divider">|</span>
+      <span>Pay in 4 installments with Afterpay</span>
+    </div>
+
+    <header class="header">
+      <div class="header-inner">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <a href="#" class="store-logo">MERIDIAN</a>
+
+        <nav class="main-nav" id="mainNav">
+          <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-xmark"></i>
+          </button>
+          <ul>
+            <li><a href="#" class="nav-link active">Home</a></li>
+            <li><a href="#" class="nav-link">Shop</a></li>
+            <li><a href="#" class="nav-link">New Arrivals</a></li>
+            <li><a href="#" class="nav-link">Sale</a></li>
+            <li><a href="#" class="nav-link">Brands</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="header-icon" id="searchToggle" aria-label="Search">
             <i class="fas fa-search"></i>
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Search products..."
-              autocomplete="off"
-            />
+          </button>
+          <button class="header-icon" id="wishlistBtn" aria-label="Wishlist">
+            <i class="fas fa-heart"></i>
+            <span class="header-badge" id="wishlistBadge">0</span>
+          </button>
+          <button class="header-icon" id="cartBtn" aria-label="Cart">
+            <i class="fas fa-bag-shopping"></i>
+            <span class="header-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-search" id="mobileSearch">
+      <div class="mobile-search-inner">
+        <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" />
+        <button id="searchClose"><i class="fas fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <main>
+      <section class="hero">
+        <div class="hero-col hero-col-text">
+          <span class="hero-tag">Winter Collection 2026</span>
+          <h1 class="hero-title">
+            Essentials<br />
+            <span>Refined</span>
+          </h1>
+          <p class="hero-desc">Minimal design. Maximum comfort. Thoughtfully crafted for the way you live today.</p>
+          <div class="hero-actions">
+            <a href="#shop" class="btn-primary">Shop Now</a>
+            <a href="#deals" class="btn-ghost">Explore <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="filter-dropdown">
+        </div>
+        <div class="hero-col hero-col-art">
+          <div class="hero-art-ring"></div>
+          <div class="hero-art-dot dot-1"></div>
+          <div class="hero-art-dot dot-2"></div>
+          <div class="hero-art-dot dot-3"></div>
+          <div class="hero-art-dot dot-4"></div>
+          <div class="hero-art-line"></div>
+          <div class="hero-art-square"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Shop by Category</h2>
+          <a href="#" class="section-link">Browse All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="categories-grid" id="categoriesGrid"></div>
+      </section>
+
+      <section class="section section-promo" id="deals">
+        <div class="promo-banner">
+          <div class="promo-content">
+            <span class="promo-badge">Limited Time</span>
+            <h2>Up to 40% Off</h2>
+            <p>On select electronics and accessories. Offer ends soon.</p>
+            <button class="btn-primary" id="dealsBtn">Shop the Sale</button>
+          </div>
+          <div class="promo-circles">
+            <span class="promo-pct">40%</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="shop">
+        <div class="section-header">
+          <h2>All Products</h2>
+          <div class="toolbar-controls">
             <select id="categoryFilter">
               <option value="all">All Categories</option>
             </select>
+            <select id="sortSelect">
+              <option value="default">Sort By: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="rating">Highest Rated</option>
+              <option value="discount">Biggest Discount</option>
+            </select>
           </div>
         </div>
-        <div class="cart-icon-wrapper" id="cartIconBtn">
-          <i class="fas fa-shopping-bag"></i>
-          <span class="cart-count" id="cartCountNav">0</span>
+        <div class="product-grid" id="productsGrid"></div>
+        <div class="pagination-bar" id="paginationBar">
+          <button class="btn-outline btn-load" id="loadMoreBtn">
+            Load More <i class="fas fa-chevron-down"></i>
+          </button>
+          <span class="pagination-info" id="paginationInfo"></span>
         </div>
-      </div>
-    </nav>
-
-    <!-- MAIN PRODUCT GRID -->
-    <main class="container">
-      <div class="products-header">
-        <h2>✨ Featured collection</h2>
-        <p id="resultStats">Loading amazing products...</p>
-      </div>
-      <div id="productsGrid" class="products-grid">
-        <div class="loading-spinner">
-          <i class="fas fa-spinner fa-pulse"></i> Loading products...
-        </div>
-      </div>
+      </section>
     </main>
 
-    <!-- CART SIDEBAR DRAWER -->
-    <div id="cartOverlay" class="cart-overlay"></div>
-    <div id="cartSidebar" class="cart-sidebar">
-      <div class="cart-header">
-        <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
-        <button id="closeCartBtn" class="close-cart">
-          <i class="fas fa-times"></i>
+    <section class="features-strip">
+      <div class="features-inner">
+        <div class="feature-item">
+          <i class="fas fa-truck"></i>
+          <div>
+            <strong>Free Shipping</strong>
+            <span>On orders over $50</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-rotate-left"></i>
+          <div>
+            <strong>Easy Returns</strong>
+            <span>30-day return policy</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-shield"></i>
+          <div>
+            <strong>Secure Payment</strong>
+            <span>256-bit SSL encrypted</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-headset"></i>
+          <div>
+            <strong>24/7 Support</strong>
+            <span>Dedicated help center</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-col footer-brand">
+          <h3>MERIDIAN</h3>
+          <p>Your destination for premium essentials. We curate products that combine quality, design, and value.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Sale</a></li>
+            <li><a href="#">Gift Cards</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns &amp; Exchanges</a></li>
+            <li><a href="#">Order Tracking</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-newsletter">
+          <h4>Stay in the Loop</h4>
+          <p>Get 10% off your first order when you subscribe.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+          </form>
+          <div class="payment-icons">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-amex"></i>
+            <i class="fab fa-cc-paypal"></i>
+            <i class="fab fa-cc-apple-pay"></i>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Meridian Store. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <aside class="drawer-overlay" id="drawerOverlay"></aside>
+
+    <aside class="drawer" id="cartDrawer">
+      <div class="drawer-header">
+        <h2><i class="fas fa-bag-shopping"></i> Shopping Cart</h2>
+        <button class="drawer-close" id="closeCart"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="drawer-body" id="cartBody">
+        <div class="empty-state">
+          <i class="fas fa-cart-plus"></i>
+          <h3>Your cart is empty</h3>
+          <p>Looks like you haven't added anything yet.</p>
+        </div>
+      </div>
+      <div class="drawer-footer" id="cartFooter">
+        <div class="cart-subtotal">
+          <span>Subtotal</span>
+          <span class="subtotal-amount" id="cartSubtotal">$0.00</span>
+        </div>
+        <p class="cart-shipping-note">Free shipping on orders over $50</p>
+        <button class="btn-primary btn-checkout" id="checkoutBtn">
+          Checkout <i class="fas fa-lock"></i>
         </button>
       </div>
-      <div id="cartItemsContainer" class="cart-items"></div>
-      <div class="cart-footer">
-        <div class="cart-total">
-          <span>Total:</span>
-          <span id="cartTotalPrice">$0.00</span>
+    </aside>
+
+    <aside class="drawer wishlist-drawer" id="wishlistDrawer">
+      <div class="drawer-header">
+        <h2><i class="fas fa-heart"></i> Your Wishlist</h2>
+        <button class="drawer-close" id="closeWishlist"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="drawer-body" id="wishlistBody">
+        <div class="empty-state">
+          <i class="fas fa-heart-crack"></i>
+          <h3>Wishlist is empty</h3>
+          <p>Save items you love for later.</p>
         </div>
-        <button id="checkoutBtn" class="checkout-btn">
-          Proceed to Checkout <i class="fas fa-arrow-right"></i>
-        </button>
+      </div>
+    </aside>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" id="productModal">
+        <button class="modal-close-btn" id="modalClose"><i class="fas fa-xmark"></i></button>
+        <div class="modal-body" id="modalBody"></div>
       </div>
     </div>
+
+    <div id="toastContainer" class="toast-container"></div>
 
     <script src="script.js"></script>
   </body>
