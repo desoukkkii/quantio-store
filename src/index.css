@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+  :focus-visible {
+    outline: 2px solid #0f766e;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 14px;
+    right: 14px;
+    height: 1.5px;
+    background: #0d0f14;
+    transform: scaleX(0);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center;
+  }
+  .nav-underline:hover::after,
+  .nav-underline.active::after {
+    transform: scaleX(1);
+  }
+  .cat-card-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(15, 118, 110, 0.04));
+    opacity: 0;
+    transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cat-card-bg:hover::before { opacity: 1; }
+  .hv-orbit {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    border: 1px dashed rgba(13, 15, 20, 0.1);
+  }
+  .hv-orbit--2 {
+    width: 240px;
+    height: 240px;
+    border-style: solid;
+    border-color: rgba(201, 168, 76, 0.2);
+  }
+  .hv-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+  }
+  .promo-bg-shape {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+    top: -200px;
+    right: -100px;
+    pointer-events: none;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.1ms !important;
+  }
+}
